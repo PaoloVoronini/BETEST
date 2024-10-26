@@ -1,0 +1,12 @@
+spring.config.activate.on-profile: alice
+kafka:
+  sender: alice
+  topic-in: bob2alice
+  topic-out: alice2bob
+
+---
+spring.config.activate.on-profile: bob
+kafka:
+  sender: bob
+  topic-in: alice2bob
+  topic-out: bob2alice

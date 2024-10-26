@@ -2,4 +2,10 @@ spring:
   application:
     name: demo
   config:
-    import: classpath:datasource.yml
+    import:
+      - classpath:datasource.yml
+      - classpath:topics.yml
+
+kafka:
+  topic-in: fromUser
+  topic-out: toUser
