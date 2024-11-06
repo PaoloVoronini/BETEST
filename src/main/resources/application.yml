@@ -3,9 +3,18 @@ spring:
     name: demo
   config:
     import:
-      - classpath:datasource.yml
       - classpath:topics.yml
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/TEST_USER
+    username: test_user
+    password: 1
+  liquibase:
+    change-log: liquibase/master.xml
+  kafka:
+    bootstrapServers: localhost:9092
 
 kafka:
-  topic-in: fromUser
-  topic-out: toUser
+  sender: test
+  topic-in: topicTest
+  topic-out: topicTest

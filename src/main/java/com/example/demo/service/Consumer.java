@@ -6,6 +6,7 @@ import com.example.demo.dto.MessageDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Log4j2
 @RequiredArgsConstructor
@@ -13,12 +14,11 @@ import org.springframework.stereotype.Service;
 public class Consumer {
 
     private final MessageRepository messageRepository;
-    private final MessageConverter messageConverter;
 
-    public void consume(String received) {
+    @Transactional
+    public void consume(MessageDto received) {
         log.info("Received: {}", received);
-        MessageDto dto = messageConverter.fromString(received);
-        Message message = fromDto(dto);
+        Message message = fromDto(received);
         messageRepository.save(message);
     }
 

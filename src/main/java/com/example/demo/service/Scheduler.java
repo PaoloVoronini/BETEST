@@ -19,7 +19,7 @@ public class Scheduler {
     private final Sender sender;
     private final MessageConverter messageConverter;
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(fixedDelay = 5000)
     void generateRandomAndSend() {
         MessageDto dto = new MessageDto(System.currentTimeMillis(), name, LocalTime.now().toString());
         String message = messageConverter.toString(dto);
